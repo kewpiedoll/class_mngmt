@@ -7,7 +7,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :profession
       t.string :favorite_ice_cream_flavor
 
-      t.timestamps
+      t.timestamps #created_at, updated_at
     end
   end
 end
