@@ -6,8 +6,10 @@
       <th>Full name</th>
       <th>Age</th>
       <th>Bio</th>
+      <th>More...</th>
       <th>Profession</th>
       <th>Favorite ice cream flavor</th>
+      <th>Email</th>
       <th></th>
       <th></th>
       <th></th>
@@ -23,6 +25,7 @@
         <td><%= link_to 'Read More', students_path(read_more: student.id) %></td>
         <td><%= student.profession %></td>
         <td><%= student.favorite_ice_cream_flavor %></td>
+        <td><%= student.email %></td>
         <td><%= link_to 'Show', student %></td>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
         <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -34,3 +37,7 @@
 <br>
 
 <%= link_to 'New Student', new_student_path %>
+
+<%= content_for :head do %>
+  <title>hello akichin!</title>
+<% end %>

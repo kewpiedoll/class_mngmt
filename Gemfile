@@ -7,8 +7,14 @@ group :test, :development do
   gem 'rspec-rails'
 end
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :test, :development do
+  # Use sqlite3 as the database for Active Record (switched to PG for Week 4 stuff)
+  gem 'pg'
+end
+
+group :production do
+  gem 'pg'
+end
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
