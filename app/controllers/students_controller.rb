@@ -1,24 +1,27 @@
 class StudentsController < ApplicationController
+  before_filter :authenticate_student!
+
   before_action :set_student, only: [:show, :edit, :update, :destroy]
- 
+
   # GET /students
   # GET /students.json
-  def index 
+  def index
     @students = Student.all
-    @title = "Student's Page"
+    @title = "Students Page"
     @read_more = params[:read_more]
-  end 
+  end
 
   # GET /students/1
   # GET /students/1.json
   def show
-    render 'show', layout: 'special'
-  end 
+    render 'show', layout: false
+  end
 
   # GET /students/new
   def new
     @student = Student.new
-    render 'new', layout: :default #layout of application controller - parent controller for this one
+    @student.courses.build
+    render 'new', layout: :default #layout of ApplicationController - parent controller for this one
   end
 
   # GET /students/1/edit
@@ -32,8 +35,8 @@ class StudentsController < ApplicationController
     @student = Student.new(student_params)
     respond_to do |format|
       if @student.save
-        format.html {render 'shared/thank_you'}
-        #format.html { redirect_to @student, notice: 'Student was successfully created.' }
+        #format.html { render 'shared/thank_you'}
+        format.html { redirect_to @student, notice: 'Student was successfully created.' }
         format.json { render action: 'show', status: :created, location: @student }
       else
         format.html { render action: 'new' }
@@ -74,6 +77,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:full_name, :age, :bio, :profession, :favorite_ice_cream_flavor, :email)
+      params.require(:student).permit(:full_name, :age, :bio, :profession, :favorite_ice_cream_flavor, :email, course_ids: [], courses_attributes: [:title])
     end
 end

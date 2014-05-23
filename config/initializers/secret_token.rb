@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-ClassMngmt::Application.config.secret_key_base = 'b166c49940e3c78a99184275af6ddb3e972c5a980cb6608961bf61b42f872794c328e8515d4d1e508f007c90561065fbd6831566d707ba971dce012002b6621e'
+ClassMngmt::Application.config.secret_key_base = '382c8d064008e1d907f2e82820f51798f5e3d5ea81bd5b0aeff3a6fa3164a09cb024195072a10f552c3ab2f7d31574beaba90c2e8910c295b6d055de650c603c'

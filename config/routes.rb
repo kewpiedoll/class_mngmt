@@ -1,21 +1,21 @@
 ClassMngmt::Application.routes.draw do
+  devise_for :students
   resources :students
 
   namespace :api do
     resources :students
   end
 
+  post '/hello', to: 'welcome#create_hello'
+
   get '/hello', to: 'welcome#hello'
   get '/hello/:name', to: 'welcome#hello'
 
-  # this was week3 class where I came in a little late
   get '/thanks', to: 'welcome#thanks'
 
   post '/mailbox', to: 'welcome#mailbox'
-  
-  root to: 'welcome#hello'
-  
 
+  root to: 'welcome#hello'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -57,7 +57,7 @@ ClassMngmt::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

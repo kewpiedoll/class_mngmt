@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Full name:</strong>
   <%= @student.full_name %>
@@ -23,6 +21,11 @@
 <p>
   <strong>Favorite ice cream flavor:</strong>
   <%= @student.favorite_ice_cream_flavor %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @student.email %>
 </p>
 
 <%= link_to 'Edit', edit_student_path(@student) %> |

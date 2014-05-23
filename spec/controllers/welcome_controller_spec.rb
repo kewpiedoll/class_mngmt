@@ -9,23 +9,31 @@ describe WelcomeController do
     end
   end
 
-  describe "Get 'thanks'" do
-    it "works as anticipated" do 
-    	get :thanks
+  describe "POST 'create_hello'" do
 
-      #same as the one above, but Kerri likes it as being more standard
-      # above will be deprecated soon and more object oriented
-    	expect(response).to be_success 
-    	expect(response).to render_template('shared/thank_you')
-    	expect(response).to_not render_template('fakey/poo')
+    it "should return a successful response" do
+      post :create_hello
+      response.should be_success
     end
-  end  	
-  
-  describe "POST 'mailbox'" do 
+
+  end
+
+  describe "GET 'thanks'" do
+    it "works as anticipated" do
+      get :thanks
+
+      expect(response).to be_success
+      expect(response).to render_template('shared/thank_you')
+      expect(response).not_to render_template('fakey/poo')
+    end
+  end
+
+  describe "POST 'mailbox'" do
     it "returns HTTP success" do
-      post :mailbox, {foo: "bar", baz: "bat"}
+      post :mailbox, { foo: "bar", baz: "bat" }
 
       expect(response).to be_success
     end
   end
+
 end

@@ -1,19 +1,15 @@
 module StudentsHelper
 
   def short_bio student
-  	bio = student.bio
-  	if @read_more.to_i == student.id
-  		bio
-  	else
-  	  truncate bio, length: 15, omission: '...'
+    bio = student.bio.to_s
+    if @read_more.to_i == student.id
+      read_less = link_to ' Read Less', students_path(read_more: 0)
+      bio + read_less
+    else
+      read_more = link_to 'Read More', students_path(read_more: student.id)
+      t = truncate bio, length: 30, omission: '... '
+      t.gsub('... ', "... #{read_more}")
     end
-
-    # old code, before truncate
-  	# bio = student.bio
-  	# short_bio = bio[0..12]
-   #  short_bio += '...' if bio.length > 12
-   #  short_bio
   end
-
 
 end
